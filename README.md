@@ -6,3 +6,20 @@ Back-bone of applicatio is from Miguel Grinberg's [Flask Mega-Tutorial](https://
 
 
 Chris you can check if I'm hosting it at http://192.168.0.7:5000/
+
+I'd actually recommend a virtual environment for this.
+
+```
+python -m venv <environment name>
+<environment name>/Scripts/activate.bat
+...
+<environment name>/Scripts/deactivate.bat
+
+```
+OR
+```
+python -m venv <environment name>
+source <environment name>/bin/activate
+...
+deactivate
+```
