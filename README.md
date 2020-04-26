@@ -12,6 +12,16 @@ Back-bone of application is from Miguel Grinberg's [Flask Mega-Tutorial](https:/
 ## Chris look
 Chris you can check if I'm hosting it at http://192.168.0.7:5000/
 
+## Running locally
+
+Its easy to run locally if you have all the packages downloaded. 
+
+Use 
+```
+flask run
+```
+From the top level directory.
+
 ## Virtual Environment
 I'd actually recommend a virtual environment for this.
 
