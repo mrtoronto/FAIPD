@@ -1,0 +1,36 @@
+<head>
+    <style>
+
+        th, td {
+          text-align: left;
+          padding: 20px;
+          border-bottom: 1px solid #ddd;
+        }
+
+        a {
+          text-decoration: none; color:black;
+        }
+
+        a:hover {
+          color:#FAF6DB;
+        }
+
+    </style>
+</head>
+
+
+<tr>
+ <td>
+    <a href="{{ url_for('user', username=post.author.username) }}">
+                <img src="{{ post.author.avatar(70) }}" />
+    </a>
+    </td>
+ <td><a href="{{ url_for('user', username=post.author.username) }}">{{ post.author.display_name }}</a></td>
+ <td>{{ post.author.affiliation }}</td>
+ {% if post_target_type in ['feed', 'explore'] %}
+ <th>{{ post.post_origin_type }}</th>
+ <th>{{ post.post_target_type }}</th>
+ {% endif %}  
+ <td><a href="{{ url_for('post', id=post.id) }}"><b>{{ post.post_title }}</b><br>{{ post.body }}</a></td>
+</tr>
+

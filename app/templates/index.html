@@ -1,0 +1,60 @@
+<head>
+    <style>
+        table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+
+
+        tr:hover {color:#FAF6DB; background-color: #766C7F;}
+    </style>
+</head>
+
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+<body style = "background-color: #ebebe8">
+    <h1 style = "color:#31352e; padding:35px;">
+    {{ page_header }} 
+    </h1>
+    {% if form %}
+    {{ wtf.quick_form(form) }}
+    <br>
+    {% endif %}
+        <div class="table-users">
+       
+       <table>
+          <tr>
+             <th>Picture</th>
+             <th>Display Name</th>
+             <th>Affiliation</th>
+             {% if post_target_type in ['feed', 'explore'] %}
+             <th>Opportunity Source</th>
+             <th>Opportunity Target</th>
+             {% endif %}
+             <th width="300">Opportunity Description</th>
+          </tr> 
+          {% for post in posts %}
+            {% include '_post.html' %}
+        {% endfor %}
+       </table>
+    </div>
+
+        <nav aria-label="...">
+        <ul class="pager">
+            <li class="previous{% if not prev_url %} disabled{% endif %}">
+                <a href="{{ prev_url or '#' }}">
+                    <span aria-hidden="true">&larr;</span> Newer posts
+                </a>
+            </li>
+            <li class="next{% if not next_url %} disabled{% endif %}">
+                <a href="{{ next_url or '#' }}">
+                    Older posts <span aria-hidden="true">&rarr;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</body>
+{% endblock %}

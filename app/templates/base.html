@@ -1,0 +1,107 @@
+<head>
+    <style>
+    /* Dropdown Button */
+    .dropbtn {
+      padding: 16px;
+      font-size: 12px;
+      border: none;
+    }
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f4f4f4;
+      min-width: 160px;
+      box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {background-color: #766C7F; color:#FAF6DB;}
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {display: block;}
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover 
+    .dropbtn {color:#FAF6DB; background-color: #766C7F;} 
+
+    li {font-size:12px;}
+
+    .navbar_colored {color:#FAF6DB; background-color: #766C7F;}
+    </style>
+</head>
+
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+    {% if title %}{{ title }} - FAIPD{% else %}FAIPD{% endif %}
+{% endblock %}
+
+{% block navbar %}
+    <nav class="navbar navbar-default" style="  height: 30px;">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{{ url_for('index') }}">FAIPD</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url_for('feed', post_target_type = 'feed') }}">My Feed</a></li>
+                    <li><a href="{{ url_for('feed', post_target_type = 'explore') }}">Explore</a></li>
+                    <li>
+                        <div class="dropdown">
+                        <button class="dropbtn">Seeking a...</button>
+                        <div class="dropdown-content">
+                            <a href="{{ url_for('feed', post_target_type = 'school') }}" title="Unpaired companies click here">University</a>
+                            <a href="{{ url_for('feed', post_target_type = 'company') }}" title="Unpaired universities click here">Company</a>
+                            <a href="{{ url_for('feed', post_target_type = 'pair') }}" title="Unpaired Students click here">University-Company Pair</a>
+                            <a href="{{ url_for('feed', post_target_type = 'student') }}" title="Paired university-companies click here">Student</a>
+                            
+                        </div>
+                        </div>
+                    </li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if current_user.is_anonymous %}
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    {% else %}
+                    <li><a href="{{ url_for('make_a_post') }}">Create post</a></li>
+                    <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-info" role="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        {# application content needs to be provided in the app_content block #}
+        {% block app_content %}{% endblock %}
+    </div>
+{% endblock %}

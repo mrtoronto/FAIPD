@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block app_content %}
+	<h3>{{ post.post_title }}</h3>
+	<h4>{{ author.username }}</h4>
+
+	<div>
+		<p>{{ post.body }}</p>
+	</div>
+	{% if author.username == current_user.username %}
+	<a href="{{ url_for('edit_post', post_id=post.id) }}">Edit Post</a>
+	{% endif %}
+{% endblock %}
