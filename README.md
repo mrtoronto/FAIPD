@@ -12,6 +12,7 @@ I'd actually recommend a virtual environment for this.
 ```
 python -m venv <environment name>
 <environment name>/Scripts/activate.bat
+pip3 install -r requirements.txt
 ...
 <environment name>/Scripts/deactivate.bat
 
@@ -20,6 +21,7 @@ OR
 ```
 python -m venv <environment name>
 source <environment name>/bin/activate
+pip3 install -r requirements.txt
 ...
 deactivate
 ```
