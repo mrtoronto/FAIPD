@@ -54,14 +54,16 @@
 {% endblock %}
 
 {% block navbar %}
-    <nav class="navbar navbar-default" style="  height: 30px;">
+    <nav class="navbar navbar-default" style="z-index:100;  height: 30px;">
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="{{ url_for('index') }}">FAIPD</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+                    {% if current_user.is_authenticated %}
                     <li><a href="{{ url_for('feed', post_target_type = 'feed') }}">My Feed</a></li>
+                    {% endif %}
                     <li><a href="{{ url_for('feed', post_target_type = 'explore') }}">Explore</a></li>
                     <li>
                         <div class="dropdown">

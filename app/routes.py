@@ -129,7 +129,8 @@ def register():
         user = User(username=form.username.data, 
             email=form.email.data, 
             user_type = form.user_type.data, 
-            display_name=form.display_name.data)
+            display_name=form.display_name.data,
+            affiliation=form.affiliation.data)
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()

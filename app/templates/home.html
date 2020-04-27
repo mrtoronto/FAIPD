@@ -1,3 +1,65 @@
 {% extends "base.html" %}
 {% block app_content %}
-<h1> WeLcOmE tO mY wEbSiTe I hOpE yOu EnJoY iT!i!</h1>{% endblock %}
+<head>
+	<style>
+		.landing_button {
+			height: 30px; 
+			width: 100px; 
+			background-color: #ebebe8;
+		}
+		.landing_button a {
+			color: black;
+		    text-decoration: none;
+		    display: block;
+		    padding: 5px 0;
+		}
+
+	    .landing_button a:hover {background-color: #766C7F; color:#FAF6DB;}
+	    .landing_button:hover {background-color: #766C7F}
+
+	</style>
+</head>
+
+<body style="background-color: #ebebe8">
+	<center>
+		<div style="">
+			<div style="height:400px; position:relative; top:100px; background-color: white; width:40%; z-index:3; left:15%">
+				<div style="position: relative; top: 23%;">
+					<p><h3>Welcome to<br>FindAnIndustrialPhD</h3></p>
+				</div>
+				<div style="position: relative; top: 24%;">
+					<div>
+						Check out opportunties currently listed on FAIPD by following the links below. 
+						<br>
+					</div>
+					<div style="padding-top: 20px">
+						<div style="padding-top: 5px">
+							<div class="landing_button">
+			                            <a href="{{ url_for('feed', post_target_type = 'student') }}" title="Paired university-companies click here">Student</a>
+							</div>
+						</div>
+						<div style="padding-top: 5px">
+							<div class="landing_button">
+									<a href="{{ url_for('feed', post_target_type = 'company') }}" title="Paired university-companies click here">Company</a>
+							</div>
+						</div>
+						<div style="padding-top: 5px">
+							<div class="landing_button">
+									<a href="{{ url_for('feed', post_target_type = 'school') }}" title="Paired university-companies click here">University</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="height:400px; position:relative; top:-450px;background-color: black; width:95%; z-index:1"></div>
+			<div style="height:800px; position:relative; top:-450px; background-color: grey; width:95%; z-index:2">
+				<div style="width:40%; float: left; text-align: left; padding-left: 15px">
+					At FAIPD, we recognize the potential benefit for all three stakeholders in an industrial PhD agreement. We're looking to facilitate the creation of positions, the process of student recruitment and the process of position acquistion all at once.
+				</div>
+			</div>
+		</div>
+	</center>
+	
+</body>
+
+{% endblock %}

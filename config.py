@@ -14,4 +14,3 @@ class Config(object):
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     ADMINS = ['your-email@example.com']
     POSTS_PER_PAGE = 25
-    SERVER_NAME = '127.0.0.1:5000'
